@@ -5,7 +5,6 @@ $(document).ready( function(){
       method: 'GET',
       dataType: 'JSON'
     }).done( function(products) {
-      debugger
       var list = $('#products');
       list.empty();
       products.forEach( function(item) {
@@ -14,5 +13,24 @@ $(document).ready( function(){
         list.append('<hr/>')
       });
     });
+
+
+    // var currentGame = {};
+    var showForm = false;
+
+  $('#toggle').on('click', function() {
+    showForm = !showForm;
+    $('#product-form').remove()
+    $('#products').toggle()
+    if (showForm) {
+
+      $.ajax({
+        url: '/products/new',
+        method: 'GET'
+      }).done( function(html) {
+        $('#toggle').after(html);
+      });
+    }
+  });
 
 })

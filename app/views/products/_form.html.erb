@@ -1,0 +1,9 @@
+<div id="product-form">
+  <%= form_tag("/products", method: :post) do %>
+    <%= text_field_tag "name", " " %>
+    <%= text_field_tag "base_price", " " %>
+    <%= text_field_tag "description", " " %>
+    <%= text_field_tag "quantity_on_hand", "" %>
+    <%= submit_tag "Create" %>
+  <% end %>
+</div>
